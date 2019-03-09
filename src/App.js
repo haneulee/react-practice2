@@ -12,14 +12,24 @@ class App extends Component {
         { no: 1, country: "egypt", visited: false },
         { no: 2, country: "turkey", visited: true },
         { no: 3, country: "korea", visited: true }
-      ]
+      ],
+      num: 0
     };
+  }
+  add() {
+    this.setState({num: this.state.num + 1})
+  }
+  subtract = () => {
+    this.setState({num: this.state.num - 1})
   }
   render() {
     return (
       <div className="container">
         <h1>{this.state.msg}</h1>
         <hr style={styles}/>
+        <input type="text" value={this.state.num}/>
+        <button type="button" onClick={this.add.bind(this)}>add</button>
+        <button type="button" onClick={this.subtract}>subtract</button>
         <CountryList countries={this.state.list} /><Footer/>
       </div>
     );
