@@ -27,7 +27,7 @@ let Hello = (props) => {
 - setState를 호출하면 re-render를 수행 
 - (따라서, 값을 비교하여 render를 매번 수행하지 않도록 해야함)
 - (or shouldComponentUpdate 이용, shallow compare/pureComponent)
-- (or immutable.js 사용)
+- (or immutable.js, immutability-helper, *immer.js*, deepcopy, lodash _.extend(), Object.assign() 사용)
 
 #### 속성 유효성 검증
 - propTypes / Flow / Typescript
@@ -40,3 +40,7 @@ let Hello = (props) => {
 - 일반 함수에서는 this를 bind로 지정해야 컴포넌트 객체가 됨
 - controlled component : state or props에 의해 제어됨
 - Uncontrolled component : state or props에 의해 제어되지 않음 (html dom에 직접 접근해야 함)
+
+#### 부모, 자식 컴포넌트 간의 통신
+- 부모 > 자식 : props로 전달
+- 자식 > 부모 : 부모 컴포넌트의 콜백함수 전달
