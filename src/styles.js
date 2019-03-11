@@ -21,6 +21,13 @@ const styles = {
   dashStyle: {
     backgroundColor: "#fff",
     borderTop: "2px dashed gray"
+  },
+  title: {
+    textAlign: "center",
+    fontSize: "20pt"
+  },
+  todoDone: {
+    textDecoration: "line-through"
   }
 };
 
