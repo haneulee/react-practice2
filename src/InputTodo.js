@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import Logger from "./Logger";
 
 class InputTodo extends Component {
   constructor() {
@@ -46,4 +47,4 @@ InputTodo.propTypes = {
   add: PropTypes.func.isRequired
 };
 
-export default InputTodo;
+export default Logger(InputTodo);

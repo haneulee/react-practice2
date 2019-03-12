@@ -1,8 +1,8 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 import styles from "./styles";
-import PropTypes from "prop-types"
+import PropTypes from "prop-types";
 
-class CountryItem extends Component {
+class CountryItem extends PureComponent {
   render() {
     return (
       <li style={styles.listItemStyle} className="list-group-item active">
@@ -13,19 +13,19 @@ class CountryItem extends Component {
 }
 
 CountryItem.propTypes = {
-    // visited: PropTypes.bool.isRequired,
-    // country: function(props, propName, componentName) {
-    //     if (props[propName].indexOf(["*", "!"]) === -1) {
-    //         return new Error(`${propName} 속성의 값은 특수문자를 허용하지 않습니다. (${componentName} 컴포넌트)`)
-    //     }
-    // }
-    no: PropTypes.number.isRequired,
-    item: PropTypes.string.isRequired
-}
+  // visited: PropTypes.bool.isRequired,
+  // country: function(props, propName, componentName) {
+  //     if (props[propName].indexOf(["*", "!"]) === -1) {
+  //         return new Error(`${propName} 속성의 값은 특수문자를 허용하지 않습니다. (${componentName} 컴포넌트)`)
+  //     }
+  // }
+  no: PropTypes.number.isRequired,
+  item: PropTypes.string.isRequired
+};
 
 CountryItem.defaultProps = {
-    no: 0,
-    item: "아이템 1"
-}
+  no: 0,
+  item: "아이템 1"
+};
 
 export default CountryItem;

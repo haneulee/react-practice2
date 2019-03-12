@@ -54,6 +54,7 @@ class App extends Component {
           add={this.add}
           delete={this.delete}
           toggle={this.toggle}
+          isLog="true"
         />
         <Footer />
       </div>
