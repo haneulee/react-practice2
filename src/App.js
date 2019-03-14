@@ -5,6 +5,9 @@ import Footer from "./Footer";
 import styles from "./styles";
 import update from "immutability-helper";
 import MyButton from "./MyButton";
+// import Portal from "./Portal";
+import { Portal } from "react-portal";
+import Modal from "./Modal";
 
 class App extends Component {
   constructor(props) {
@@ -15,9 +18,13 @@ class App extends Component {
         { no: 1, todo: "react study", done: false },
         { no: 2, todo: "clean rooms", done: true },
         { no: 3, todo: "brunch", done: false }
-      ]
+      ],
+      showModal: false
     };
   }
+  toggleModalBox = () => {
+    this.setState({ showModal: !this.state.showModal });
+  };
   add = todo => {
     let newList = update(this.state.todolist, {
       $push: [{ no: new Date().getTime(), todo: todo, done: false }]
@@ -42,6 +49,7 @@ class App extends Component {
     this.setState({ todolist: newList });
   };
   render() {
+    const { showModal } = this.state;
     return (
       <div className="container">
         <h1 style={styles.title}>{this.state.msg}</h1>
@@ -56,6 +64,16 @@ class App extends Component {
           toggle={this.toggle}
           isLog="true"
         />
+        <button onClick={this.toggleModalBox}>modal</button>
+        <Portal node={document && document.getElementById("modal-area")}>
+          <Modal
+            showModal={showModal}
+            header="modal title"
+            toggleModalBox={this.toggleModalBox}
+          >
+            <p>모달 컨텐츠~~</p>
+          </Modal>
+        </Portal>
         <Footer />
       </div>
     );
