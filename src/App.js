@@ -6,8 +6,9 @@ import styles from "./styles";
 import update from "immutability-helper";
 import MyButton from "./MyButton";
 // import Portal from "./Portal";
-import { Portal } from "react-portal";
+// import { Portal } from "react-portal";
 import Modal from "./Modal";
+import axios from "axios";
 
 class App extends Component {
   constructor(props) {
@@ -21,6 +22,29 @@ class App extends Component {
       ],
       showModal: false
     };
+  }
+  componentDidMount() {
+    axios
+      .post("http://sample.bmaster.kro.kr/contacts", {
+        name: "sky",
+        tel: "010-0000-0000",
+        address: "seoul"
+      })
+      .then(Response => {
+        if (Response.data.status !== "success") {
+          throw new Error("data add error");
+        }
+        console.log(Response);
+        return axios.get(
+          "http://sample.bmaster.kro.kr/contacts/" + Response.data.no
+        );
+      })
+      .then(Response => {
+        console.log(Response.data);
+      })
+      .catch(error => {
+        console.log(error);
+      });
   }
   toggleModalBox = () => {
     this.setState({ showModal: !this.state.showModal });
@@ -65,7 +89,7 @@ class App extends Component {
           isLog="true"
         />
         <button onClick={this.toggleModalBox}>modal</button>
-        <Portal node={document && document.getElementById("modal-area")}>
+        {/* <Portal node={document && document.getElementById("modal-area")}>
           <Modal
             showModal={showModal}
             header="modal title"
@@ -73,7 +97,7 @@ class App extends Component {
           >
             <p>모달 컨텐츠~~</p>
           </Modal>
-        </Portal>
+        </Portal> */}
         <Footer />
       </div>
     );
