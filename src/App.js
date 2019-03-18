@@ -6,9 +6,12 @@ import styles from "./styles";
 import update from "immutability-helper";
 import MyButton from "./MyButton";
 // import Portal from "./Portal";
-// import { Portal } from "react-portal";
+import { Portal } from "react-portal";
 import Modal from "./Modal";
 import axios from "axios";
+import { Container } from "flux/utils";
+import ItemStore from "./flux/ItemStore";
+import ItemAction from "./flux/ItemAction";
 
 class App extends Component {
   constructor(props) {
@@ -50,27 +53,31 @@ class App extends Component {
     this.setState({ showModal: !this.state.showModal });
   };
   add = todo => {
-    let newList = update(this.state.todolist, {
-      $push: [{ no: new Date().getTime(), todo: todo, done: false }]
-    });
-    this.setState({ todolist: newList });
+    // let newList = update(this.state.todolist, {
+    //   $push: [{ no: new Date().getTime(), todo: todo, done: false }]
+    // });
+    // this.setState({ todolist: newList });
+
+    ItemAction.addTodo(todo);
   };
   delete = no => {
-    let index = this.state.todolist.findIndex(todo => todo.no === no);
-    let newList = update(this.state.todolist, {
-      $splice: [[index, 1]]
-    });
-    this.setState({ todolist: newList });
+    // let index = this.state.todolist.findIndex(todo => todo.no === no);
+    // let newList = update(this.state.todolist, {
+    //   $splice: [[index, 1]]
+    // });
+    // this.setState({ todolist: newList });
+    ItemAction.deleteTodo(no);
   };
   toggle = no => {
-    let index = this.state.todolist.findIndex(todo => todo.no === no);
-    let toggle = !this.state.todolist[index].done;
-    let newList = update(this.state.todolist, {
-      [index]: {
-        done: { $set: toggle }
-      }
-    });
-    this.setState({ todolist: newList });
+    // let index = this.state.todolist.findIndex(todo => todo.no === no);
+    // let toggle = !this.state.todolist[index].done;
+    // let newList = update(this.state.todolist, {
+    //   [index]: {
+    //     done: { $set: toggle }
+    //   }
+    // });
+    // this.setState({ todolist: newList });
+    ItemAction.toggleTodo(no);
   };
   render() {
     const { showModal } = this.state;
@@ -103,5 +110,13 @@ class App extends Component {
     );
   }
 }
+
+// container 고차 함수를 이용해 itemstore객체를 store로 등록하고
+// itemstore의 상태 데이터를 app 컴포넌트의 state로 설정함
+App.getStores = () => [ItemStore];
+App.calculateState = prevState => {
+  return ItemStore.getState();
+};
+const AppContainer = Container.create(App);
 
 export default App;
