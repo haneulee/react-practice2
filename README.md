@@ -124,3 +124,19 @@ let Hello = (props) => {
 - stores : 어플리케이션의 상태, action을 통해서 메세지를 전달받아야만 변경됨
 - views :
 - action : 사용자와 상호작업, ajax, 타이머, 웹소켓 이벤트 수행
+
+#### Redux
+
+- flux + hot reloading + time travel debugging
+- flux는 상태와 상태 변경 로직을 모두 가지고 있는데 핫 리로딩을 할 때 문제가 됨
+- 또한, 상태를 액션마다 재기록하기 때문에 time travel debugging이 불가능함
+- store : 단 하나의 스토어만 가짐 (dispatch, subscribe, getState, replaceReducer 메소드)
+- action : 액션은 스토어를 거쳐 리듀서로 전달되고, 리듀서가 상태를 변경하면 쓰토어로 리턴
+- reducer : 순수함수, 계층적 트리구조로 구성되야 함
+
+```
+* 3 rules
+- single source of truth : 단 하나의 스토어만 사용
+- state is read-only : 상태변경을 위해서는 액션을 통해서만 가능
+- changes are made with pure function : 리듀서는 순수 함수
+```

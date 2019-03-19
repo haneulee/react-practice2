@@ -18,11 +18,6 @@ class App extends Component {
     super(props);
     this.state = {
       msg: "todo list",
-      todolist: [
-        { no: 1, todo: "react study", done: false },
-        { no: 2, todo: "clean rooms", done: true },
-        { no: 3, todo: "brunch", done: false }
-      ],
       showModal: false
     };
   }
@@ -58,7 +53,7 @@ class App extends Component {
     // });
     // this.setState({ todolist: newList });
 
-    ItemAction.addTodo(todo);
+    this.props.addTodo(todo);
   };
   delete = no => {
     // let index = this.state.todolist.findIndex(todo => todo.no === no);
@@ -66,7 +61,7 @@ class App extends Component {
     //   $splice: [[index, 1]]
     // });
     // this.setState({ todolist: newList });
-    ItemAction.deleteTodo(no);
+    this.props.deleteTodo(no);
   };
   toggle = no => {
     // let index = this.state.todolist.findIndex(todo => todo.no === no);
@@ -77,7 +72,7 @@ class App extends Component {
     //   }
     // });
     // this.setState({ todolist: newList });
-    ItemAction.toggleTodo(no);
+    this.props.toggleTodo(no);
   };
   render() {
     const { showModal } = this.state;
@@ -89,14 +84,14 @@ class App extends Component {
         {/* <MyButton subtract={this.subtract}>subtract</MyButton> */}
         {/* <CountryList itemlist={this.state.itemlist} /> */}
         <Todo
-          todolist={this.state.todolist}
+          todolist={this.props.todolist}
           add={this.add}
           delete={this.delete}
           toggle={this.toggle}
           isLog="true"
         />
         <button onClick={this.toggleModalBox}>modal</button>
-        {/* <Portal node={document && document.getElementById("modal-area")}>
+        <Portal node={document && document.getElementById("modal-area")}>
           <Modal
             showModal={showModal}
             header="modal title"
@@ -104,7 +99,7 @@ class App extends Component {
           >
             <p>모달 컨텐츠~~</p>
           </Modal>
-        </Portal> */}
+        </Portal>
         <Footer />
       </div>
     );
@@ -113,10 +108,10 @@ class App extends Component {
 
 // container 고차 함수를 이용해 itemstore객체를 store로 등록하고
 // itemstore의 상태 데이터를 app 컴포넌트의 state로 설정함
-App.getStores = () => [ItemStore];
-App.calculateState = prevState => {
-  return ItemStore.getState();
-};
-const AppContainer = Container.create(App);
+// App.getStores = () => [ItemStore];
+// App.calculateState = prevState => {
+//   return ItemStore.getState();
+// };
+// const AppContainer = Container.create(App);
 
 export default App;
