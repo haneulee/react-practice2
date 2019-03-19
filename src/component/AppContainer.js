@@ -1,11 +1,13 @@
 import App from "./App";
-import TodoActionCreator from "./redux/TodoActionCreator";
+import TodoActionCreator from "../redux/TodoActionCreator";
+import TimeActionCreator from "../redux/TimeActionCreator";
 import { connect } from "react-redux";
 import Todo from "./Todo";
 
 const mapStateToProps = state => {
   return {
-    todolist: state.todolist
+    todolist: state.todolist,
+    curTime: state.curTime
   };
 };
 
@@ -13,7 +15,8 @@ const mapDispatchToProps = dispatch => {
   return {
     addTodo: todo => dispatch(TodoActionCreator.addTodo(todo)),
     deleteTodo: no => dispatch(TodoActionCreator.deleteTodo(no)),
-    toggleTodo: no => dispatch(TodoActionCreator.toggleTodo(no))
+    toggleTodo: no => dispatch(TodoActionCreator.toggleTodo(no)),
+    changeTime: () => dispatch(TimeActionCreator.changeTime())
   };
 };
 

@@ -1,5 +1,6 @@
 export default {
   ADD_TODO: "add_todo",
   DELETE_TODO: "delete_todo",
-  TOGGLE_TODO: "toggle_todo"
+  TOGGLE_TODO: "toggle_todo",
+  CHANGE_TIME: "change_time"
 };

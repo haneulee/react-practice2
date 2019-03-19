@@ -9,7 +9,7 @@ const initialState = {
   ]
 };
 
-const TodoReducer = (state = initialState, action) => {
+const TodoReducer = (todolist = initialState.todolist, action) => {
   let index, newTodo, newTodolist, toggle;
   switch (action.type) {
     case Constant.ADD_TODO:
@@ -18,27 +18,27 @@ const TodoReducer = (state = initialState, action) => {
         todo: action.payload.todo,
         done: false
       };
-      newTodolist = update(state.todolist, { $push: [newTodo] });
-      return { todolist: newTodolist };
+      newTodolist = update(todolist, { $push: [newTodo] });
+      return newTodolist;
     case Constant.DELETE_TODO:
-      index = state.todolist.findIndex(x => x.no === action.payload.no);
-      newTodolist = update(state.todolist, { $splice: [[index, 1]] });
+      index = todolist.findIndex(x => x.no === action.payload.no);
+      newTodolist = update(todolist, { $splice: [[index, 1]] });
 
-      return { todolist: newTodolist };
+      return newTodolist;
 
     case Constant.TOGGLE_TODO:
-      index = state.todolist.findIndex(x => x.no === action.payload.no);
-      toggle = state.todolist[index] && !state.todolist[index].done;
+      index = todolist.findIndex(x => x.no === action.payload.no);
+      toggle = todolist[index] && !todolist[index].done;
 
-      newTodolist = update(state.todolist, {
+      newTodolist = update(todolist, {
         [index]: {
           done: { $set: toggle }
         }
       });
 
-      return { todolist: newTodolist };
+      return newTodolist;
     default:
-      return state;
+      return todolist;
   }
 };
 

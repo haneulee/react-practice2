@@ -10,8 +10,9 @@ import { Portal } from "react-portal";
 import Modal from "./Modal";
 import axios from "axios";
 import { Container } from "flux/utils";
-import ItemStore from "./flux/ItemStore";
-import ItemAction from "./flux/ItemAction";
+import ItemStore from "../flux/ItemStore";
+import ItemAction from "../flux/ItemAction";
+import MyTime from "./MyTime";
 
 class App extends Component {
   constructor(props) {
@@ -91,6 +92,10 @@ class App extends Component {
           isLog="true"
         />
         <button onClick={this.toggleModalBox}>modal</button>
+        <MyTime
+          changeTime={this.props.changeTime}
+          curTime={this.props.curTime}
+        />
         <Portal node={document && document.getElementById("modal-area")}>
           <Modal
             showModal={showModal}
