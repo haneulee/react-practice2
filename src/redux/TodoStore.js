@@ -1,5 +1,20 @@
-import { createStore } from "redux";
+import { createStore, applyMiddleware } from "redux";
 import RootReducer from "./RootReducer";
+import reduxThunk from "redux-thunk";
 
-const TodoStore = createStore(RootReducer);
+const logger = store => {
+  return next => {
+    return action => {
+      if (typeof action !== "undefined") {
+        console.log(
+          "execute action : " + new Date().toLocaleTimeString(),
+          JSON.stringify(action)
+        );
+      }
+      return next(action);
+    };
+  };
+};
+
+const TodoStore = createStore(RootReducer, applyMiddleware(logger, reduxThunk));
 export default TodoStore;

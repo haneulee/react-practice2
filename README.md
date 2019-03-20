@@ -133,6 +133,9 @@ let Hello = (props) => {
 - store : 단 하나의 스토어만 가짐 (dispatch, subscribe, getState, replaceReducer 메소드)
 - action : 액션은 스토어를 거쳐 리듀서로 전달되고, 리듀서가 상태를 변경하면 쓰토어로 리턴
 - reducer : 순수함수, 계층적 트리구조로 구성되야 함
+- middleware : 액션 생성자가 액션을 전달한 후 리듀서에 가기 전에 작업을 지정하는 기능
+  (react > action creator > action > middleware > reducers > state)
+- 비동기 : redux-thunk, redux-saga, promise, async/await
 
 ```
 * 3 rules

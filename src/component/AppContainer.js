@@ -16,7 +16,7 @@ const mapDispatchToProps = dispatch => {
     addTodo: todo => dispatch(TodoActionCreator.addTodo(todo)),
     deleteTodo: no => dispatch(TodoActionCreator.deleteTodo(no)),
     toggleTodo: no => dispatch(TodoActionCreator.toggleTodo(no)),
-    changeTime: () => dispatch(TimeActionCreator.changeTime())
+    changeTime: () => dispatch(TimeActionCreator.asyncChangeTime())
   };
 };
 
