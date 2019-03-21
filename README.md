@@ -143,3 +143,9 @@ let Hello = (props) => {
 - state is read-only : 상태변경을 위해서는 액션을 통해서만 가능
 - changes are made with pure function : 리듀서는 순수 함수
 ```
+
+#### react router
+
+- url 정보를 확인해 특정 컴포넌트를 렌더링하는 기능을 제공하는 리액트 라이브러리
+- spa 기능 (페이지 이동 없음)
+- router, link, route

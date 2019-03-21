@@ -13,12 +13,18 @@ import { Container } from "flux/utils";
 import ItemStore from "../flux/ItemStore";
 import ItemAction from "../flux/ItemAction";
 import MyTime from "./MyTime";
+import { BrowserRouter as Router, Route } from "react-router-dom";
+
+import Header from "./Header";
+import Home from "./Home";
+import About from "./About";
+import Members from "./Members";
+import TodoList from "./TodoList";
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      msg: "todo list",
       showModal: false
     };
   }
@@ -78,35 +84,39 @@ class App extends Component {
   render() {
     const { showModal } = this.state;
     return (
-      <div className="container">
-        <h1 style={styles.title}>{this.state.msg}</h1>
-        <hr style={styles} />
-        {/* <MyButton addItem={this.addItem.bind(this)}>add</MyButton> */}
-        {/* <MyButton subtract={this.subtract}>subtract</MyButton> */}
-        {/* <CountryList itemlist={this.state.itemlist} /> */}
-        <Todo
-          todolist={this.props.todolist}
-          add={this.add}
-          delete={this.delete}
-          toggle={this.toggle}
-          isLog="true"
-        />
-        <button onClick={this.toggleModalBox}>modal</button>
-        <MyTime
-          changeTime={this.props.changeTime}
-          curTime={this.props.curTime}
-        />
-        <Portal node={document && document.getElementById("modal-area")}>
-          <Modal
-            showModal={showModal}
-            header="modal title"
-            toggleModalBox={this.toggleModalBox}
-          >
-            <p>모달 컨텐츠~~</p>
-          </Modal>
-        </Portal>
-        <Footer />
-      </div>
+      <Router>
+        <div className="container">
+          <Header />
+          <Route exact path="/" component={Home} />
+          <Route path="/about" component={About} />
+          <Route path="/members" component={Members} />
+          <Route
+            path="/todolist"
+            render={props => (
+              <TodoList
+                {...props}
+                todolist={this.props.todolist}
+                changeTime={this.props.changeTime}
+                curTime={this.props.curTime}
+                add={this.add}
+                delete={this.delete}
+                toggle={this.toggle}
+                toggleModalBox={this.toggleModalBox}
+              />
+            )}
+          />
+          <Portal node={document && document.getElementById("modal-area")}>
+            <Modal
+              showModal={showModal}
+              header="modal title"
+              toggleModalBox={this.toggleModalBox}
+            >
+              <p>모달 컨텐츠~~</p>
+            </Modal>
+          </Portal>
+          <Footer />
+        </div>
+      </Router>
     );
   }
 }
