@@ -149,3 +149,26 @@ let Hello = (props) => {
 - url 정보를 확인해 특정 컴포넌트를 렌더링하는 기능을 제공하는 리액트 라이브러리
 - spa 기능 (페이지 이동 없음)
 - router, link, route
+
+```
+* route
+- match : 경로 정보 보유 (params, isExact, path, url)
+- location : 앱이 현재 위치하고 있는 경로 (=window.location)
+- history : 앱이 이동했던 url 경로들의 이력 정보 포함 (go(), forward(), push())
+
+this.props.history.push("/../")
+this.props.history.goBack()
+this.props.history.go(n)
+this.props.history.foFoward()
+
+- browserRouter
+- hashRouter
+- memoryRouter : react-native or hybrid app
+- switch : 매칭되는 경로가 없으면 마지막 route 에서 마지막 컴포넌트를 렌더링함
+- redirect
+
+```
+#### react-router-config
+- 리액트 라우터 앱에서 정적 라우트 정보의 설정을 도와주는 라이브러리
+- renderRoutes
+- matchRoutes
