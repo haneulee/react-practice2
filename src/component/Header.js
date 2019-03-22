@@ -24,6 +24,9 @@ class Header extends Component {
               <Link className="btn btn-success menu" to="/todolist">
                 Todolist
               </Link>
+              <Link className="btn btn-success menu" to="/songs">
+                Songlist
+              </Link>
             </div>
           </div>
         </div>

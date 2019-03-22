@@ -20,12 +20,57 @@ import Home from "./Home";
 import About from "./About";
 import Members from "./Members";
 import TodoList from "./TodoList";
+import SongList from "./SongList";
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      showModal: false
+      showModal: false,
+      songs: [
+        {
+          id: 1,
+          title: "fallin for you",
+          musician: "colbie callet",
+          youtube_link: "PABUI_EX_hw"
+        },
+        {
+          id: 2,
+          title: "can't hurry love",
+          musician: "the supremes",
+          youtube_link: "EJDPhjQft04"
+        },
+        {
+          id: 3,
+          title: "landslide",
+          musician: "dixie chicks",
+          youtube_link: "V2N7gYom9-A"
+        },
+        {
+          id: 4,
+          title: "can't let go",
+          musician: "linda ronstadt",
+          youtube_link: "P-EpGKXmoe4"
+        },
+        {
+          id: 5,
+          title: "doctor my eyes",
+          musician: "jackson browne",
+          youtube_link: "7JIFKS_1oZk"
+        },
+        {
+          id: 6,
+          title: "we gotta get you a woman",
+          musician: "todd rundgren",
+          youtube_link: "EyUjbBViAGE"
+        },
+        {
+          id: 7,
+          title: "hip to my heart",
+          musician: "band perry",
+          youtube_link: "vpLCFnD9LFo"
+        }
+      ]
     };
   }
   componentDidMount() {
@@ -104,6 +149,10 @@ class App extends Component {
                 toggleModalBox={this.toggleModalBox}
               />
             )}
+          />
+          <Route
+            path="/songs"
+            render={props => <SongList {...props} songs={this.state.songs} />}
           />
           <Portal node={document && document.getElementById("modal-area")}>
             <Modal
