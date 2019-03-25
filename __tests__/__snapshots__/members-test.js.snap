@@ -3,10 +3,10 @@
 exports[`changes the class when hovered 1`] = `
 <div>
   <a
-    _onMouseEnter={[Function]}
-    _onMouseLeave={[Function]}
     className="normal"
     href="http://www.facebook.com"
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
   >
     facebook
   </a>
@@ -16,10 +16,10 @@ exports[`changes the class when hovered 1`] = `
 exports[`properly escapes quotes 1`] = `
 <div>
   <a
-    _onMouseEnter={[Function]}
-    _onMouseLeave={[Function]}
     className="normal"
     href="#"
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
   >
     "Facebook" \\' is \\ 'awesome'
   </a>
@@ -29,10 +29,10 @@ exports[`properly escapes quotes 1`] = `
 exports[`renders as an anchor when no page is set 1`] = `
 <div>
   <a
-    _onMouseEnter={[Function]}
-    _onMouseLeave={[Function]}
     className="normal"
     href="#"
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
   >
     facebook
   </a>
@@ -42,10 +42,10 @@ exports[`renders as an anchor when no page is set 1`] = `
 exports[`renders correctly 1`] = `
 <div>
   <a
-    _onMouseEnter={[Function]}
-    _onMouseLeave={[Function]}
     className="normal"
     href="http://www.facebook.com"
+    onMouseEnter={[Function]}
+    onMouseLeave={[Function]}
   >
     facebook
   </a>

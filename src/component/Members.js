@@ -27,8 +27,8 @@ class Members extends Component {
         <a
           className={this.state.class}
           href={this.props.page || "#"}
-          _onMouseEnter={this._onMouseEnter}
-          _onMouseLeave={this._onMouseLeave}
+          onMouseEnter={this._onMouseEnter}
+          onMouseLeave={this._onMouseLeave}
         >
           {this.props.children}
         </a>

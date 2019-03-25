@@ -36,11 +36,11 @@ it("changes the class when hovered", () => {
   const tree = component.toJSON();
   expect(tree).toMatchSnapshot();
 
-  tree.props._onMouseEnter();
+  tree.props.onMouseEnter();
   tree = component.toJSON();
   expect(tree).toMatchSnapshot();
 
-  tree.props._onMouseLeave();
+  tree.props.onMouseLeave();
   tree = component.toJSON();
   expect(tree).toMatchSnapshot();
 });
