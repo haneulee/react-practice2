@@ -168,7 +168,37 @@ this.props.history.foFoward()
 - redirect
 
 ```
+
 #### react-router-config
+
 - 리액트 라우터 앱에서 정적 라우트 정보의 설정을 도와주는 라이브러리
 - renderRoutes
 - matchRoutes
+
+#### jest
+
+- jasmine 기반
+- snapshot : 렌더링된 컴포넌트의 출력 결과 ui, react 트리를 직렬화한 문자열 값
+- react-test-renderer : snapshot 테스트
+- anzyme(airbnb에서 만든 테스팅 유틸리티), react-addons-test-utils : dom 테스트
+- shallow rendering : 종속된 자식 컴포넌트는 렌더링하지 않음, 해당 컴포넌트의 렌더링만 테스트 가능
+
+```
+afterAll(fn): 모든 테스트가 완료된 후 실행할 함수를 등록
+afterEach(fn): 각 테스트를 수행한 후 실행할 함수를 등록
+describe(name, fn): 관련된 테스트들을 묶어 테스트 블록을 테스트 스위트 형태로 생성.
+desribe.only(name, fn): 여러 개의 테스트 블록 중, describe.only()만 수행
+describe.skip(name, fn): 특정 테스트 블록을 실행하지 않을 경우
+test(name, fn): 테스트함수
+test.only(name, fn)
+test.skip(name, fn)
+require.requireActual(moduleName)
+require.requireMock(moduleName)
+
+<Matcher>
+
+toBe()
+toEqual()
+not
+
+```
